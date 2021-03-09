@@ -4,7 +4,7 @@ Area: languages
 TOCTitle: PHP
 ContentId: DD4E5A59-1586-4A5D-8047-3D58B2FE6937
 PageTitle: PHP Programming with Visual Studio Code
-DateApproved: 12/11/2020
+DateApproved: 3/4/2021
 MetaDescription: Learn about Visual Studio Code editor features (syntax highlighting, snippets, linting) and extensions for PHP.
 ---
 # PHP in Visual Studio Code
@@ -55,9 +55,7 @@ Visual Studio Code includes a set of common snippets for PHP. To access these, h
 
 There are many PHP language extensions available on the [VS Code Marketplace](https://marketplace.visualstudio.com/VSCode) and more are being created. You can search for PHP extensions from within VS Code in the **Extensions** view (`kb(workbench.view.extensions)`) then filter the extensions drop-down list by typing 'php'.
 
-<div class="marketplace-extensions-php"></div>
-
-> Tip: The extensions shown above are dynamically queried. Click on an extension tile above to read the description and reviews to decide which extension is best for you. See more in the [Marketplace](https://marketplace.visualstudio.com).
+![Searching for PHP in the Extensions view](images/php/category-php.png)
 
 ### Disable built-in PHP support
 

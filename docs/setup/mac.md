@@ -4,7 +4,7 @@ Area: setup
 TOCTitle: macOS
 ContentId: EEADB50A-F5E3-41E9-89DA-35F165196691
 PageTitle: Running Visual Studio Code on macOS
-DateApproved: 12/11/2020
+DateApproved: 3/4/2021
 MetaDescription: Get Visual Studio Code up and running on Mac (macOS).
 ---
 # Visual Studio Code on macOS
@@ -73,7 +73,9 @@ VS Code ships monthly [releases](/updates) and supports auto-update when a new r
 
 ## Preferences menu
 
-You can configure VS Code through [settings](/docs/getstarted/settings.md), [color themes](/docs/getstarted/themes.md), and [custom keybindings](/docs/getstarted/keybindings.md) and you will often see mention of the **File** > **Preferences** menu group.  On a macOS, the **Preferences** menu group is under **Code**, not **File**.
+You can configure VS Code through [settings](/docs/getstarted/settings.md), [color themes](/docs/getstarted/themes.md), and [custom keybindings](/docs/getstarted/keybindings.md) available through the **Code** > **Preferences** menu group.
+
+You may see mention of **File** > **Preferences** in documentation, which is the **Preferences** menu group location on Windows and Linux. On a macOS, the **Preferences** menu group is under **Code**, not **File**.
 
 ## Next steps
 
@@ -95,6 +97,4 @@ If VS Code doesn't update once it restarts, it might be set under quarantine by 
 
 ### Does VS Code run on Mac M1 machines?
 
-Yes, VS Code supports macOS ARM64 builds that can run on Macs with the Apple M1 chip. Currently, only [Insiders](/insiders) macOS ARM64 builds are available.
-
-![macOS ARM64 Insiders build](images/mac/arm64-insiders.png)
+Yes, VS Code supports macOS ARM64 builds that can run on Macs with the Apple M1 chip. You can install the Universal build, which includes both Intel and Apple Silicon builds, or one of the platform specific builds.

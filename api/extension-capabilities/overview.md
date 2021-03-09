@@ -1,7 +1,7 @@
 ---
 # DO NOT TOUCH — Managed by doc writer
 ContentId: d22675fc-6609-43f2-a66b-8f2a52597195
-DateApproved: 12/11/2020
+DateApproved: 3/4/2021
 
 # Summarize the whole topic in less than 300 characters for SEO purpose
 MetaDescription: Learn the details of what's possible with Visual Studio Code's rich extension (plug-in) API.
@@ -109,6 +109,10 @@ On the other hand, VS Code also offers a set of [Debug Extension API](/api/refer
 - Add support for working with remote files over FTP or SFTP.
 - Register new source control provider, such as Mercurial.
 - Implement a custom file search provider. -->
+
+## Extension Guidelines
+
+To help make your extension fit seemlessly into the VS Code user interface, refer to the [Extension Guidelines](/api/references/extension-guidelines), where you'll learn the best practices for creating extension UI and conventions for following the preferred VS Code workflows.
 
 ## Restrictions
 

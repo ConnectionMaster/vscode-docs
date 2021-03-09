@@ -4,7 +4,7 @@ Area: editor
 TOCTitle: Emmet
 ContentId: baf4717c-ea52-486e-9ea3-7bf1c4134dad
 PageTitle: Emmet in Visual Studio Code
-DateApproved: 12/11/2020
+DateApproved: 3/4/2021
 MetaDescription: Using Emmet abbreviations inside Visual Studio Code.
 ---
 # Emmet in Visual Studio Code
@@ -79,29 +79,6 @@ Emmet has no knowledge of these new languages, and so there might be Emmet sugge
 You can use most of the Emmet actions with multi-cursors as well:
 
 ![Emmet with multi cursors](images/emmet/emmet-multi-cursor.gif)
-
-## Include vendor prefixes
-
-Prefix your CSS abbreviations with `-` to get all applicable vendor prefixes included in the expanded abbreviation.
-
-![Vendor prefix in emmet](images/emmet/emmet-vendor-prefix.gif)
-
-Below are a few examples of how you can control which vendors get applied to which CSS property by updating the `emmet.preferences` setting:
-
-```json
-{
-    "emmet.preferences": {
-        "css.webkitProperties": "border-right,animation",
-        "css.mozProperties": "",
-        "css.oProperties": null,
-        "css.msProperties": null
-    }
-}
-```
-
-- Setting the preference to a comma separated list of CSS properties will ensure that the corresponding prefix gets added only to those CSS properties.
-- Setting the preference to an empty string will ensure that the corresponding prefix doesn't get added to any CSS property.
-- Setting the preference to null will ensure that the default CSS properties for each vendor as documented in [Emmet Preferences](https://docs.emmet.io/customization/preferences/) get used.
 
 ## Using filters
 
@@ -207,7 +184,7 @@ HTML custom snippets are applicable to all other markup flavors like `haml` or `
 
 For example, for an unordered list with a list item, if your snippet value is `ul>li`, you can use the same snippet in `html`, `haml`, `pug` or `slim`, but if your snippet value is `<ul><li></li></ul>`, then it will work only in `html` files.
 
-If you want a snippet for plain text, then surround the text with the `{}`.
+If you want a snippet for plain text, then surround the text with `{}`.
 
 ### CSS Emmet snippets
 
@@ -216,8 +193,6 @@ Values for CSS Emmet snippets should be a complete property name and value pair.
 CSS custom snippets are applicable to all other stylesheet flavors like `scss`, `less` or `sass`. Therefore, don't include a trailing `;` at the end of the snippet value. Emmet will add it as needed based on whether the language requires it.
 
 Do not use `:` in the snippet name. `:` is used to separate property name and value when Emmet tries to fuzzy match the abbreviation to one of the snippets.
-
-> Note: After making changes to the `snippets.json` file, remember to reload VS Code for it to take effect.
 
 ### Tab stops and cursors in custom snippets
 
@@ -327,11 +302,7 @@ Below are Emmet [settings](/docs/getstarted/settings.md) that you can use to cus
     - `filter.commentAfter`
     - `format.noIndentTags`
     - `format.forceIndentationForTags`
-    - `profile.allowCompactBoolean`,
-    - `css.webkitProperties`
-    - `css.mozProperties`
-    - `css.msProperties`
-    - `css.oProperties`
+    - `profile.allowCompactBoolean`
     - `css.fuzzySearchMinScore`
 
     The format for the `filter.commentAfter` preference is different and simpler in Emmet 2.0.

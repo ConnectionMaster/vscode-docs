@@ -4,7 +4,7 @@ Area: editor
 TOCTitle: Debugging
 ContentId: 4E9A74AA-D778-4D1C-B369-83763B3C340F
 PageTitle: Debugging in Visual Studio Code
-DateApproved: 12/11/2020
+DateApproved: 3/4/2021
 MetaDescription: One of the great things in Visual Studio Code is debugging support.  Set breakpoints, step-in, inspect variables and more.
 MetaSocialImage: images/debugging/Debugging.png
 ---
@@ -269,7 +269,7 @@ Below is an example that passes `"args"` to the program differently on Windows:
 
 Valid operating properties are `"windows"` for Windows, `"linux"` for Linux and `"osx"` for macOS. Properties defined in an operating system specific scope override properties defined in the global scope.
 
-Please note that the `type` property can not be placed inside a platform-specific section, because `type` indirectly determines the platform in remote debugging scenarios, and that would result in a cyclic dependency.
+Please note that the `type` property cannot be placed inside a platform-specific section, because `type` indirectly determines the platform in remote debugging scenarios, and that would result in a cyclic dependency.
 
 In the example below debugging the program always **stops on entry** except on macOS:
 
@@ -316,11 +316,18 @@ A powerful VS Code debugging feature is the ability to set conditions based on e
 - **Expression condition**: The breakpoint will be hit whenever the expression evaluates to `true`.
 - **Hit count**: The 'hit count' controls how many times a breakpoint needs to be hit before it will 'break' execution. Whether a 'hit count' is respected and the exact syntax of the expression vary among debugger extensions.
 
-You can add a condition and/or hit count when creating the breakpoint (with the **Add Conditional Breakpoint** action) or when modifying an existing one (with the **Edit Breakpoint** action). In both cases, an inline text box with a drop-down menu opens where you can enter expressions:
+You can add a condition and/or hit count when creating a source breakpoint (with the **Add Conditional Breakpoint** action) or when modifying an existing one (with the **Edit Condition** action). In both cases, an inline text box with a drop-down menu opens where you can enter expressions:
 
 ![HitCount](images/debugging/hitCount.gif)
 
-If a debugger does not support conditional breakpoints, the **Add Conditional Breakpoint** action will be missing.
+Condition and hit count editing support is also supported for **function** and **exception** breakpoints.
+You can initiate condition editing from the context menu, or the new inline **Edit Condition** action.
+
+An example of condition editing in the **BREAKPOINTS** view:
+![condition editing in breakpoint view](images/debugging/breakpoints.gif)
+
+If a debugger does not support conditional breakpoints, the **Add Conditional Breakpoint** and **Edit Condition** actions will be missing.
+
 
 ### Inline breakpoints
 

@@ -1,7 +1,7 @@
 ---
 # DO NOT TOUCH — Managed by doc writer
 ContentId: cd928e7f-bb5a-43b0-8e15-d398e416386d
-DateApproved: 12/11/2020
+DateApproved: 3/4/2021
 
 # Summarize the whole topic in less than 300 characters for SEO purpose
 MetaDescription: A guide to configure language support for any language in Visual Studio Code.
@@ -19,7 +19,7 @@ The [`contributes.languages`](/api/references/contribution-points#contributes.la
 - Word pattern
 - Indentation Rules
 
-Here is a [Language Configuration Sample](https://github.com/microsoft/vscode-extension-samples/tree/master/language-configuration-sample) that configures the editing experience for JavaScript files. This guide explains the content of `language-configuration.json`:
+Here is a [Language Configuration Sample](https://github.com/microsoft/vscode-extension-samples/tree/main/language-configuration-sample) that configures the editing experience for JavaScript files. This guide explains the content of `language-configuration.json`:
 
 **Note: If your language configuration file name is or ends with `language-configuration.json`, you will get autocompletion and validation in VS Code.**
 
@@ -91,6 +91,7 @@ Moreover, when you run **Go to Bracket** or **Select to Bracket**, VS Code will 
 
 When you type `'`, VS Code creates a pair of single quotes and puts your cursor in the middle: `'|'`. This section defines such pairs.
 
+
 ```json
 {
   "autoClosingPairs": [
@@ -113,6 +114,14 @@ The `notIn` key disables this feature in certain code ranges. For example, when 
 ```
 
 The single quote will not be autoclosed.
+
+Pairs that do not require a `notIn` property can also use a simpler syntax:
+```json
+{
+  "autoClosingPairs": [ ["{", "}"], ["[", "]"] ]
+}
+```
+
 
 Users can tweak the autoclosing behavior with the `editor.autoClosingQuotes` and `editor.autoClosingBrackets` settings.
 

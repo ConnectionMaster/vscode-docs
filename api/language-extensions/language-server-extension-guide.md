@@ -1,7 +1,7 @@
 ---
 # DO NOT TOUCH — Managed by doc writer
 ContentId: A8CBE8D6-1FEE-47BF-B81E-D79FA0DB5D03
-DateApproved: 12/11/2020
+DateApproved: 3/4/2021
 
 # Summarize the whole topic in less than 300 characters for SEO purpose
 MetaDescription: Learn how to create Language Servers to provide rich language features in Visual Studio Code.
@@ -14,7 +14,7 @@ As you have seen in the [Programmatic Language Features](/api/language-extension
 This topic:
 
 - Explains the benefits of Language Server Extension.
-- Walks you through building a Language Server using the [`Microsoft/vscode-languageserver-node`](https://github.com/microsoft/vscode-languageserver-node) library. You can also jump directly to the code in [lsp-sample](https://github.com/microsoft/vscode-extension-samples/tree/master/lsp-sample).
+- Walks you through building a Language Server using the [`Microsoft/vscode-languageserver-node`](https://github.com/microsoft/vscode-languageserver-node) library. You can also jump directly to the code in [lsp-sample](https://github.com/microsoft/vscode-extension-samples/tree/main/lsp-sample).
 
 ## Why Language Server?
 
@@ -64,8 +64,8 @@ Let's build a simple Language Server extension that implements autocomplete and 
 
 If you prefer to jump right into the code:
 
-- **[lsp-sample](https://github.com/microsoft/vscode-extension-samples/tree/master/lsp-sample)**: Heavily documented source code for this guide.
-- **[lsp-multi-server-sample](https://github.com/microsoft/vscode-extension-samples/tree/master/lsp-multi-server-sample)**: A heavily documented, advanced version of **lsp-sample** that starts a different server instance per workspace folder to support the [multi-root workspace](/docs/editor/multi-root-workspaces) feature in VS Code.
+- **[lsp-sample](https://github.com/microsoft/vscode-extension-samples/tree/main/lsp-sample)**: Heavily documented source code for this guide.
+- **[lsp-multi-server-sample](https://github.com/microsoft/vscode-extension-samples/tree/main/lsp-multi-server-sample)**: A heavily documented, advanced version of **lsp-sample** that starts a different server instance per workspace folder to support the [multi-root workspace](/docs/editor/multi-root-workspaces) feature in VS Code.
 
 Clone the repository [Microsoft/vscode-extension-samples](https://github.com/microsoft/vscode-extension-samples) and open the sample:
 
@@ -128,10 +128,10 @@ The actual Language Client source code and the corresponding `package.json` are 
 
 ```json
 "engines": {
-    "vscode": "^1.43.0"
+    "vscode": "^1.52.0"
 },
 "dependencies": {
-    "vscode-languageclient": "^6.1.3"
+    "vscode-languageclient": "^7.0.0"
 }
 ```
 
@@ -148,7 +148,7 @@ import {
   LanguageClientOptions,
   ServerOptions,
   TransportKind
-} from 'vscode-languageclient';
+} from 'vscode-languageclient/node';
 
 let client: LanguageClient;
 
@@ -210,7 +210,7 @@ The source code for the Language Server is at `/server`. The interesting section
 
 ```json
 "dependencies": {
-    "vscode-languageserver": "^6.1.1",
+    "vscode-languageserver": "^7.0.0",
     "vscode-languageserver-textdocument": "^1.0.1"
 }
 ```
@@ -233,7 +233,7 @@ import {
   TextDocumentPositionParams,
   TextDocumentSyncKind,
   InitializeResult
-} from 'vscode-languageserver';
+} from 'vscode-languageserver/node';
 
 import {
   TextDocument
@@ -542,10 +542,6 @@ If you are using `vscode-languageclient` to implement the client, you can specif
 For **lsp-sample**, you can set this setting: `"languageServerExample.trace.server": "verbose"`. Now head to the channel "Language Server Example". You should see the logs:
 
 ![LSP Log](images/language-server-extension-guide/lsp-log.png)
-
-As Language Servers can be chatty (5 seconds of real-world usage can produce 5000 lines of log), we also provide a tool to visualize and filter the communication between Language Client / Server. You can save all logs from the channel into a file, and load that file with the [Language Server Protocol Inspector](https://github.com/microsoft/language-server-protocol-inspector) at [https://microsoft.github.io/language-server-protocol/inspector](https://microsoft.github.io/language-server-protocol/inspector).
-
-![LSP Inspector](images/language-server-extension-guide/lsp-inspector.png)
 
 ### Using Configuration Settings in the Server
 
@@ -910,7 +906,7 @@ connection.onDidCloseTextDocument((params) => {
 
 While Language Servers have many benefits, they are not the only option for extending the editing capabilities of VS Code. In the cases when you want to add some simple language features for a type of document, consider using `vscode.languages.register[LANGUAGE_FEATURE]Provider` as an option.
 
-Here is a [`completions-sample`](https://github.com/microsoft/vscode-extension-samples/tree/master/completions-sample) using `vscode.languages.registerCompletionItemProvider` to add a few snippets as completions for plain text files.
+Here is a [`completions-sample`](https://github.com/microsoft/vscode-extension-samples/tree/main/completions-sample) using `vscode.languages.registerCompletionItemProvider` to add a few snippets as completions for plain text files.
 
 More samples illustrating the usage of VS Code API can be found at [https://github.com/microsoft/vscode-extension-samples](https://github.com/microsoft/vscode-extension-samples).
 

@@ -10,13 +10,29 @@ These guidelines cover the best practices for creating Visual Studio Code extens
 
 ## Architecture
 
-The VS Code UI has two types of elements: containers and items. Containers refer to the outer layers, which include: [Activity Bar](#view-container), Sidebar, Editor, Panel, Status Bar, and [Notifications](#notifications):
+The VS Code UI has two types of elements: containers and items. Containers refer to the outer layers, which include:
 
-![Overview of Visual Studio Code containers elements](images/guidelines/architecture-groups.png)
+[![Overview of Visual Studio Code containers elements](images/guidelines/architecture-groups.png)](/assets/api/references/guidelines/architecture-groups.png)
 
-Items are placed inside of various containers and include: Sidebar Toolbar, [View](#views), View Container, View Toolbar, [Editor Toolbar](#editor-actions), Panel Toolbar, and [Status Bar Item](#status-bar):
+1. [Activity Bar](#view-containers)
+2. Sidebar
+3. Editor
+4. Panel
+5. Status Bar
 
-![Overview of Visual Studio Code item elements](images/guidelines/architecture-sections.png)
+Items are placed inside of various containers and include:
+
+[![Overview of Visual Studio Code item elements](images/guidelines/architecture-sections.png)](/assets/api/references/guidelines/architecture-sections.png)
+
+6. View Container
+7. [View](#views)
+8. View Toolbar
+9. Sidebar Toolbar
+10. [Editor Toolbar](#editor-actions)
+11. View Container
+12. Panel Toolbar
+13. View
+14. [Status Bar Item](#status-bar):
 
 ## Notifications
 
@@ -24,7 +40,7 @@ Items are placed inside of various containers and include: Sidebar Toolbar, [Vie
 
 * [Information](/api/references/vscode-api#window.showInformationMessage)
 * [Warning](/api/references/vscode-api#window.showWarningMessage)
-* [Error](/api/references/vscode-api#window.showErrorMessage).
+* [Error](/api/references/vscode-api#window.showErrorMessage)
 
 It's important to limit the number of notifications sent in order to respect the user's attention.
 
@@ -34,7 +50,7 @@ It's important to limit the number of notifications sent in order to respect the
 
 ![Warning notification](images/guidelines/notification-warning.png)
 
-*This example highlights the errors that appear when trying to build and has an action to open the files with errors.*
+*This example highlights a blocking error with a feature that requires user input and shows actions to resolve the issue.*
 
 ![Error notification](images/guidelines/notification-error.png)
 
@@ -55,7 +71,7 @@ It's important to limit the number of notifications sent in order to respect the
 
 ### Progress notification
 
-When needing to display progress for an undetermined timeframe (for example, setting up an environment), you can use the progress notification.
+When needing to display progress for an undetermined timeframe (for example, setting up an environment), you can use the progress notification. This type of global progress notification should be used as a last resort as progress is best kept within context (within a view or editor).
 
 **✔️ Do**
 
@@ -105,7 +121,7 @@ Views can be placed in [existing view containers](/api/references/contribution-p
 
 ### View Containers
 
-[View Containers](/api/references/contribution-points#contributes.viewsContainers) are part of the Activity Bar. Each container has a unique icon that matches the rest of the iconography (outline) style. A View Container can display a badge count when needing to surface information to the user.
+[View Containers](/api/references/contribution-points#contributes.viewsContainers) are part of the Activity Bar. Each container has a unique icon that matches the rest of the iconography (outline) style.
 
 ![View Container](images/guidelines/view-container.png)
 
@@ -150,7 +166,7 @@ If you need to display custom functionality that is beyond what the VS Code API 
 * Only use webviews when absolutely necessary
 * Activate your extension only when contextually appropriate
 * Open webviews only for the active window
-* Ensure all elements in the view are themeable (see the [webview-view-sample](https://github.com/microsoft/vscode-extension-samples/blob/master/webview-view-sample/media/main.css) and [color tokens](/api/references/theme-color) documentation)
+* Ensure all elements in the view are themeable (see the [webview-view-sample](https://github.com/microsoft/vscode-extension-samples/blob/main/webview-view-sample/media/main.css) and [color tokens](/api/references/theme-color) documentation)
 * Ensure your views follow [accessibility guidance](/docs/editor/accessibility) (color contrast, ARIA labels, keyboard navigation)
 * Use command actions in the toolbar and in the view
 
@@ -227,7 +243,7 @@ If you need to show an item that is highly visible for error purposes, you can u
 
 ![Status Bar Error](images/guidelines/status-bar-error.png)
 
-*This example uses the error Status Bar item for showing a blocking error in the workspace.*
+*This example uses the error Status Bar item for showing a blocking error in the file.*
 
 ## Quick Picks
 
@@ -260,7 +276,6 @@ If you need to show an item that is highly visible for error purposes, you can u
 * Show only when contextually appropriate
 * Use icons from the icon library
 * Use the overflow menu for secondary actions
-* Allow users to hide via settings
 
 ❌ Don't
 

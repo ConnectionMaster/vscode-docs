@@ -1,7 +1,7 @@
 ---
 # DO NOT TOUCH — Managed by doc writer
 ContentId: 7EA90618-43A3-4873-A9B5-61CC131CE4EE
-DateApproved: 12/11/2020
+DateApproved: 3/4/2021
 
 # Summarize the whole topic in less than 300 characters for SEO purpose
 MetaDescription: Learn how to publish Visual Studio Code extensions to the public Marketplace and share them with other developers.
@@ -47,7 +47,7 @@ $ vsce publish
 
 ---
 
-**Note:** Due to security concerns, `vsce` will not publish extensions which contain user-provided SVG images.
+**Note:** Due to security concerns, `vsce` will not publish extensions that contain user-provided SVG images.
 
 The publishing tool checks the following constraints:
 
@@ -58,29 +58,26 @@ The publishing tool checks the following constraints:
 
 ---
 
-Visual Studio Code leverages [Azure DevOps](https://azure.microsoft.com/services/devops/) for its Marketplace services. This means that authentication, hosting, and management of extensions are provided through Azure DevOps.
+Visual Studio Code uses [Azure DevOps](https://azure.microsoft.com/services/devops/) for its Marketplace services. This means that authentication, hosting, and management of extensions are provided through Azure DevOps.
 
 `vsce` can only publish extensions using [Personal Access Tokens](https://docs.microsoft.com/azure/devops/integrate/get-started/authentication/pats). You need to create at least one in order to publish an extension.
 
 ### Get a Personal Access Token
 
-First, make sure you have an Azure DevOps [organization](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student).
+First off, follow the documentation to [create your own organization](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/create-organization?view=azure-devops) in Azure DevOps. In the following examples, the organization's name is `vscode`, you should use your new organization name as appropriate.
 
-In the following examples, the organization's name is `vscode`. From your organization's home page (for example: `https://dev.azure.com/vscode`), open the User settings dropdown menu next to your profile image and select **Personal access tokens**:
+From your organization's home page (for example: `https://dev.azure.com/vscode`), open the User settings dropdown menu next to your profile image and select **Personal access tokens**:
 
 ![Personal settings menu](images/publishing-extension/token1.png)
 
-On the **Personal Access Tokens** page, click **New Token** to create a new Personal Access Token:
+On the **Personal Access Tokens** page, select **New Token** to create a new Personal Access Token and set the following details:
+
+- Give it a Name
+- Set Organization to **All accessible organizations**
+- Optionally extend its expiration date
+- Set Scopes to **Custom defined** and choose the **Marketplace > Manage** scope
 
 ![Create personal access token](images/publishing-extension/token2.png)
-
-Give the Personal Access Token a name, optionally extend its expiration date to one year, make it accessible to every organization, select a **custom defined** scope ruleset and click **Show all scopes**:
-
-![Personal access token details](images/publishing-extension/token3.png)
-
-Finally, scroll down the list of possible scopes until you find **Marketplace** and select **Manage**:
-
-![Personal access token details](images/publishing-extension/token4.png)
 
 Select **Create** and you'll be presented with your newly created Personal Access Token. **Copy** it, you'll need it to create a publisher.
 
@@ -88,35 +85,31 @@ Select **Create** and you'll be presented with your newly created Personal Acces
 
 A **publisher** is an identity who can publish extensions to the Visual Studio Code Marketplace. Every extension needs to include a `publisher` name in its [`package.json` file](/api/references/extension-manifest).
 
-Once you have a [Personal Access Token](/api/working-with-extensions/publishing-extension#get-a-personal-access-token), you can create a new publisher using `vsce`:
+You can create a new publisher through the Visual Studio Marketplace publisher [management page](https://marketplace.visualstudio.com/manage). You need to login in with the same Microsoft account you used to create the [Personal Access Token](/api/working-with-extensions/publishing-extension#get-a-personal-access-token) in the previous section.
+
+Test your publisher's personal access token using [`vsce`](#vsce), while at the same time storing it for later usage:
 
 ```bash
-vsce create-publisher (publisher name)
+vsce login <publisher name>
 ```
 
-`vsce` will remember the provided Personal Access Token for future references to this publisher.
+### Publish an extension
 
-**Note:** Alternatively, create your publisher in the Marketplace publisher [management page](https://marketplace.visualstudio.com/manage) and log in through `vsce`, as described in the next section.
-
-### Log in to a publisher
-
-If you already created a publisher before and want to use it with `vsce`:
+You can publish an extension using [`vsce`](#vsce) with the `publish` command:
 
 ```bash
-vsce login (publisher name)
+vsce publish
 ```
 
-Similarly to the `create-publisher` command, `vsce` will ask you for the Personal Access Token and remember it for future commands.
+This command will ask for the personal access token, if you haven't already provided it with the `vsce login` command above.
 
-You can also enter your Personal Access Token as you publish with an optional parameter `-p <token>`.
+Alternatively, you can [package the extension](#packaging-extensions) (`vsce package`) and manually upload it to the [Visual Studio Marketplace publisher management page](https://marketplace.visualstudio.com/manage).
 
-```bash
-vsce publish -p <token>
-```
+![Add an extension through management page](images/publishing-extension/add-extension.png)
 
 ## Review extension installs and ratings
 
-You can see how your extension is doing on the Marketplace by going to the **Manage Publishers & Extensions** page at `https://marketplace.visualstudio.com/manage/publishers/{publisher ID}`, providing your publisher ID in the URL. Here you'll see all extensions published under your publisher ID and can select an extension to see the Acquisition Trend over time, as well as Total Acquisition counts and Ratings & Reviews.
+The same [Visual Studio Marketplace publisher management page](https://marketplace.visualstudio.com/manage) gives you access to each extension's  Acquisition Trend over time, as well as Total Acquisition counts and Ratings & Reviews. Right-click an extension and choose **Reports**.
 
 ![Marketplace extension report](images/publishing-extension/extension-report.png)
 
@@ -245,9 +238,9 @@ This will always invoke the [TypeScript](https://www.typescriptlang.org/) compil
 
 ## Next steps
 
-* [Extension Marketplace](/docs/editor/extension-gallery) - Learn more about VS Code's public extension Marketplace.
-* [Testing Extensions](/api/working-with-extensions/testing-extension) - Add tests to your extension project to ensure high quality.
-* [Bundling Extensions](/api/working-with-extensions/bundling-extension) - Improve load times by bundling your extension files with webpack.
+- [Extension Marketplace](/docs/editor/extension-gallery) - Learn more about VS Code's public extension Marketplace.
+- [Testing Extensions](/api/working-with-extensions/testing-extension) - Add tests to your extension project to ensure high quality.
+- [Bundling Extensions](/api/working-with-extensions/bundling-extension) - Improve load times by bundling your extension files with webpack.
 
 ## Common questions
 

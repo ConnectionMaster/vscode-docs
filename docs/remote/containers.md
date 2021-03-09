@@ -5,7 +5,7 @@ TOCTitle: Containers
 PageTitle: Developing inside a Container using Visual Studio Code Remote Development
 ContentId: 7ec8a02b-2eb7-45c1-bb16-ddeaac694ff6
 MetaDescription: Developing inside a Container using Visual Studio Code Remote Development
-DateApproved: 12/11/2020
+DateApproved: 3/4/2021
 ---
 # Developing inside a Container
 
@@ -398,9 +398,9 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
    RUNNING_AGENT="`ps -ax | grep 'ssh-agent -s' | grep -v grep | wc -l | tr -d '[:space:]'`"
    if [ "$RUNNING_AGENT" = "0" ]; then
         # Launch a new instance of the agent
-        ssh-agent -s &> .ssh/ssh-agent
+        ssh-agent -s &> $HOME/.ssh/ssh-agent
    fi
-   eval `cat .ssh/ssh-agent`
+   eval `cat $HOME/.ssh/ssh-agent`
 fi
 ```
 
